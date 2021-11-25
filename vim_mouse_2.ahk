@@ -134,6 +134,7 @@ EnterInsertMode(quick:=false) {
   INSERT_QUICK := quick
   NORMAL_MODE := false
   NORMAL_QUICK := false
+  Release()
 }
 
 ClickInsert(quick:=true) {
