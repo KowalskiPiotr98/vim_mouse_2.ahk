@@ -170,6 +170,13 @@ Drag() {
   Click, Down
 }
 
+Release() {
+  if GetKeyState("LButton")
+    Click, Up
+  if GetKeyState("RButton")
+    Click, Right, Up
+}
+
 Yank() {
   wx := 0
   wy := 0
@@ -336,6 +343,7 @@ Insert:: EnterInsertMode()
   ; do not conflict with y as in "scroll up"
   +Y:: Yank()
   v:: Drag()
+  t:: Release()
   z:: RightDrag()
   +M:: JumpMiddle()
   +,:: JumpMiddle2()
