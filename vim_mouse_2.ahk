@@ -1,11 +1,5 @@
 #InstallKeybdHook
 
-; vim_mouse_2.ahk
-; vim (and now also WASD!) bindings to control the mouse with the keyboard
-; 
-; Astrid Fesz-Nguyen
-; 2019-04-14
-
 global INSERT_MODE := false
 global INSERT_QUICK := false
 global NORMAL_MODE := false
@@ -15,7 +9,6 @@ global WASD := false
 ; Drag takes care of this now
 ;global MAX_VELOCITY := 72
 
-; mouse speed variables
 global FORCE := 1.8
 global RESISTANCE := 0.982
 
@@ -31,11 +24,9 @@ Accelerate(velocity, pos, neg) {
   If (pos == 0 && neg == 0) {
     Return 0
   }
-  ; smooth deceleration :)
   Else If (pos + neg == 0) {
     Return velocity * 0.666
   }
-  ; physicszzzzz
   Else {
     Return velocity * RESISTANCE + FORCE * (pos + neg)
   }
@@ -76,17 +67,9 @@ MoveCursor() {
   VELOCITY_Y := Accelerate(VELOCITY_Y, UP, DOWN)
 
   MouseMove, %VELOCITY_X%, %VELOCITY_Y%, 0, R
-
-  ;(humble beginnings)
-  ;MsgBox, %NORMAL_MODE%
-  ;msg1 := "h " . LEFT . " j  " . DOWN . " k " . UP . " l " . RIGHT
-  ;MsgBox, %msg1%
-  ;msg2 := "Moving " . VELOCITY_X . " " . VELOCITY_Y
-  ;MsgBox, %msg2%
 }
 
 EnterNormalMode(quick:=false) {
-  ;MsgBox, "Welcome to Normal Mode"
   NORMAL_QUICK := quick
 
   msg := "NORMAL"
@@ -96,7 +79,6 @@ EnterNormalMode(quick:=false) {
   If (quick) {
     msg := msg . " (QUICK)"
   }
-  ShowModePopup(msg)
 
   If (NORMAL_MODE) {
     Return
@@ -113,13 +95,11 @@ EnterWASDMode(quick:=false) {
   If (quick) {
     msg := msg . " (QUICK)"
   }
-  ShowModePopup(msg)
   WASD := true
   EnterNormalMode(quick)
 }
 
 ExitWASDMode() {
-  ShowModePopup("NORMAL (VIM)")
   WASD := false
 }
 
@@ -129,7 +109,6 @@ EnterInsertMode(quick:=false) {
   If (quick) {
     msg := msg . " (QUICK)"
   }
-  ShowModePopup(msg)
   INSERT_MODE := true
   INSERT_QUICK := quick
   NORMAL_MODE := false
@@ -149,17 +128,6 @@ DoubleClickInsert(quick:=true) {
   Sleep, 100
   Click
   EnterInsertMode(quick)
-}
-
-ShowModePopup(msg) {
-  ; clean up any lingering popups
-  ; ClosePopup()
-  ; center := MonitorLeftEdge() + (A_ScreenWidth // 2)
-  ; popx := center - 150
-  ; popy := (A_ScreenHeight // 2) - 28
-  ; Progress, b x%popx% y%popy% zh0 w300 h56 fm24,, %msg%,,SimSun
-  ; SetTimer, ClosePopup, -1600
-  ; POP_UP := true
 }
 
 ClosePopup() {
@@ -185,7 +153,6 @@ Yank() {
   WinGetPos,wx,wy,width,,A
   center := wx + width - 180
   y := wy + 12
-  ;MsgBox, Hello %width% %center%
   MouseMove, center, y
   Drag()
 }
@@ -349,8 +316,6 @@ ScrollDownMore() {
   +M:: JumpMiddle()
   +,:: JumpMiddle2()
   +.:: JumpMiddle3()
-  ; ahh what the heck, remove shift requirements for jump bindings
-  ; maybe take "m" back if we ever make marks
   m:: JumpMiddle()
   ,:: JumpMiddle2()
   .:: JumpMiddle3()
@@ -419,11 +384,3 @@ ScrollDownMore() {
 #If (POP_UP)
   Escape:: ClosePopup()
 #If
-
-; FUTURE CONSIDERATIONS
-; AwaitKey function for vimesque multi keystroke commands (gg, yy, 2M, etc)
-; "Marks" for remembering and restoring mouse positions (needs AwaitKey)
-; v to let go of mouse when mouse is down with v (lemme crop in Paint.exe)
-; z for click and release middle mouse? this has historically not worked well
-; c guess that leaves c for hold / release right mouse (x is useful in chronmium)
-; Whatever you can think of! Github issues and pull requests welcome
