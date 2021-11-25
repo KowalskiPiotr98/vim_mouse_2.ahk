@@ -1,37 +1,11 @@
 # vim\_mouse\_2.ahk
 AutoHotkey script with Vim (and now also WASD!) bindings to control the mouse with the keyboard
 
-## Installation
-Download the script and binary by cloning this repository from GitHub. (You'll need to install
-Git if you don't have it.) The command to run is
-
-`git clone https://github.com/cutejs/vim_mouse_2.ahk.git`
-
-(Or if you're fancy, clone it with SSH)
-
-You can of course also just download it as a zip file, but cloning is recommended as you
-can keep up to date with `git pull`. I'm still regularly pushing little updates here and there
-to make it better and easier to use, so you might want to check periodically.
-
-### Running from Source
-You should run this script from source; never trust binaries you just find lying around
-on the Internet, even if it's from a trustworthy source like yours truly :^)
-
-To run it you'll need to install AutoHotkey first. Then you should be able to double click
-the .ahk file to run the script. Pretty easy right?
-
-### Precompiled Binary
-As of the latest release, a precompiled version is shipped with the source code so you
-don't have to install anything at all. Just double click the .exe and you're gucci golden!
-
-If you do it this way, imagine me frowning a bit and seeming mildly disappointed. Just kidding, 
-no judgment here! We're not all programmers after all!
-
 ## Modes of Input
 Like Vim, vim\_mouse has modes of input, with "Insert mode" acting like a regular keyboard
 and "Normal mode" intercepting keys to move and control the mouse instead.
 
-`Home` or `Win Alt n` enters Normal mode
+`Win Alt n` enters Normal mode
 `Insert` or `Win Alt i` enters Insert mode
 
 ### Normal mode
@@ -77,7 +51,7 @@ Otherwise, it is just a variant of Normal mode and the rest of the hotkeys remai
 
 Acts like a normal keyboard.
 
-`Home` and `Win Alt n` put you in Normal mode.
+`Win Alt n` puts you in Normal mode.
 
 ### Normal "Quick" mode
 If you're in persistent Insert mode and just need the mouse keys for a second, you can hold
@@ -104,35 +78,8 @@ From quick Insert mode:
 - `Enter` send Enter then exit to Normal mode
 - `Capslock` toggle between Quick Insert and Normal mode
 
-`Home` enters Normal mode
-`Insert` enters regular (persistent) Insert mode
-
-## Last Remarks
-
-#### For Vim Purists
-_"Why doesn't `i` take me into Insert mode and `Escape` put me in Normal mode! >:U"_
-
-I made `i` left click. You've got `Win Alt i` which is a nice and unintrusive variant of `i`.
-We didn't even used to have that when Win Alt was part of Quick modes so there you go.
-
-`Escape` is too useful a key to bind to anything.  It was infuriating to hit Escape and not have
-the expected effect so I took it out.
-
-~ Sorry, nerds :^)
-
-_"How come I can't make my own keybindings >:I"_
-
-I like these ones. You can fork the repo to make your own, or make a pull request if you want to set up managing an ini file :^)
-
-#### The mouse moves too fast! (or too slow)
+## The mouse moves too fast! (or too slow)
 
 At the top of the file, mouse speed is controlled by two global variables, FORCE and RESISTANCE.
 FORCE controls acceleration and RESISTANCE causes diminishing returns and implicitly creates a
 terminal velocity.
-
-Use the uncompiled .ahk script and you can change these to taste.
-
-## Contact
-
-Bug reports, questions, feature requests, and pull requests are all welcome.
-Just open an issue on Github.
