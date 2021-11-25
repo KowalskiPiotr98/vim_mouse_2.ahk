@@ -5,14 +5,12 @@
 ; 
 ; Astrid Fesz-Nguyen
 ; 2019-04-14
-;
-; Last updated 2019-06-24
 
 global INSERT_MODE := false
 global INSERT_QUICK := false
 global NORMAL_MODE := false
 global NORMAL_QUICK := false
-global WASD := true
+global WASD := false
 
 ; Drag takes care of this now
 ;global MAX_VELOCITY := 72
