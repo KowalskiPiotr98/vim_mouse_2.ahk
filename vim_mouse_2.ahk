@@ -152,13 +152,13 @@ DoubleClickInsert(quick:=true) {
 
 ShowModePopup(msg) {
   ; clean up any lingering popups
-  ClosePopup()
-  center := MonitorLeftEdge() + (A_ScreenWidth // 2)
-  popx := center - 150
-  popy := (A_ScreenHeight // 2) - 28
-  Progress, b x%popx% y%popy% zh0 w300 h56 fm24,, %msg%,,SimSun
-  SetTimer, ClosePopup, -1600
-  POP_UP := true
+  ; ClosePopup()
+  ; center := MonitorLeftEdge() + (A_ScreenWidth // 2)
+  ; popx := center - 150
+  ; popy := (A_ScreenHeight // 2) - 28
+  ; Progress, b x%popx% y%popy% zh0 w300 h56 fm24,, %msg%,,SimSun
+  ; SetTimer, ClosePopup, -1600
+  ; POP_UP := true
 }
 
 ClosePopup() {
