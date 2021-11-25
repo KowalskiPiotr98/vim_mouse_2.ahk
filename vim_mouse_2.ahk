@@ -296,8 +296,8 @@ ScrollDownMore() {
 
 
 ; "FINAL" MODE SWITCH BINDINGS
-Home:: EnterNormalMode()
-Insert:: EnterInsertMode()
+; Home:: EnterNormalMode()
+; Insert:: EnterInsertMode()
 <#<!n:: EnterNormalMode()
 <#<!i:: EnterInsertMode()
 
